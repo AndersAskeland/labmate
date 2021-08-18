@@ -9,7 +9,9 @@
 # ------------------------------------------------------------------------------
 # External modules 
 from PySide2.QtWidgets import QMainWindow
-from PySide2.QtCore import QSize
+from PySide2.QtCore import QFile, QSize
+from PySide2.QtGui import QIcon
+from PySide2.QtSvg import QSvgRenderer, QSvgWidget
 
 # Local functions 
 
@@ -50,6 +52,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         window_size = QSize(1350/1.4, 800/2)
         self.resize(window_size)
         self.setFixedSize(window_size)
+
         
         # Signals
 
