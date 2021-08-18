@@ -1,0 +1,6 @@
+altgraph==0.17
+macholib==1.14
+pyinstaller==4.5.1
+pyinstaller-hooks-contrib==2021.2
+PySide2==5.15.2
+shiboken2==5.15.2

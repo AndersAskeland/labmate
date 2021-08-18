@@ -10,7 +10,7 @@
 import sys
 from PySide2.QtGui import QIcon
 from PySide2.QtWidgets import QApplication
-# from modules.user_interface import MainWindow
+from modules.user_interface import MainWindow
 
 # ------------------------------------------------------------- #
 # 2 - Application start                                         #

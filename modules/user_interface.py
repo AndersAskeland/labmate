@@ -14,7 +14,7 @@ from PySide2.QtCore import QSize
 # Local functions 
 
 # Local classes 
-
+from resources.user_interface.mainwindow import Ui_MainWindow
 # Local resources 
 
 

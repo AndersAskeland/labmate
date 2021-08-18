@@ -1,3 +1,6 @@
 {
-    "python.pythonPath": "/Users/andersaskeland/.pyenv/versions/labmate/bin/python"
+    "python.pythonPath": "/Users/andersaskeland/.pyenv/versions/labmate/bin/python",
+    "cSpell.words": [
+        "labmate"
+    ]
 }
