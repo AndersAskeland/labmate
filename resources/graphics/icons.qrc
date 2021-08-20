@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="Icons">
+    <file>ico_expand-white.svg</file>
+    <file>ico_dashboard-white.svg</file>
+    <file>ico_antibody-white.svg</file>
     <file>ico_search-white.svg</file>
     <file>ico_menu-white.svg</file>
     <file>ico_home-white.svg</file>

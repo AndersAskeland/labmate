@@ -13,6 +13,9 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 from modules.submodules.widgets import QMenuButton
+from modules.submodules.widgets import QSearchBarNew
+from modules.submodules.widgets import QTopMenuBar
+from modules.submodules.widgets import QUserSelection
 
 import icons_rc
 
@@ -20,18 +23,18 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(900, 514)
+        MainWindow.resize(2989, 779)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.menu_bar = QFrame(self.centralwidget)
+        self.menu_bar = QTopMenuBar(self.centralwidget)
         self.menu_bar.setObjectName(u"menu_bar")
+        self.menu_bar.setMinimumSize(QSize(0, 60))
         self.menu_bar.setMaximumSize(QSize(16777215, 60))
-        self.menu_bar.setFrameShape(QFrame.StyledPanel)
-        self.menu_bar.setFrameShadow(QFrame.Raised)
+        self.menu_bar.setAutoFillBackground(True)
         self.horizontalLayout = QHBoxLayout(self.menu_bar)
 #ifndef Q_OS_MAC
         self.horizontalLayout.setSpacing(-1)
@@ -45,6 +48,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btn_menu.sizePolicy().hasHeightForWidth())
         self.btn_menu.setSizePolicy(sizePolicy)
+        self.btn_menu.setMinimumSize(QSize(60, 60))
         self.btn_menu.setMaximumSize(QSize(60, 60))
         icon = QIcon()
         icon.addFile(u":/Icons/ico_menu-white.svg", QSize(), QIcon.Normal, QIcon.Off)
@@ -56,28 +60,90 @@ class Ui_MainWindow(object):
 
         self.txt_title = QLabel(self.menu_bar)
         self.txt_title.setObjectName(u"txt_title")
+        self.txt_title.setMinimumSize(QSize(120, 0))
+        self.txt_title.setMaximumSize(QSize(120, 16777215))
 
         self.horizontalLayout.addWidget(self.txt_title)
 
+        self.horizontalSpacer = QSpacerItem(100, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer)
+
         self.txt_module = QLabel(self.menu_bar)
         self.txt_module.setObjectName(u"txt_module")
+        self.txt_module.setMinimumSize(QSize(170, 0))
+        self.txt_module.setMaximumSize(QSize(170, 16777215))
+        font = QFont()
+        font.setFamily(u"Helvetica Neue")
+        font.setPointSize(16)
+        self.txt_module.setFont(font)
+        self.txt_module.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.txt_module.setMargin(10)
 
         self.horizontalLayout.addWidget(self.txt_module)
 
-        self.module_search = QWidget(self.menu_bar)
-        self.module_search.setObjectName(u"module_search")
+        self.frame_search_bar = QFrame(self.menu_bar)
+        self.frame_search_bar.setObjectName(u"frame_search_bar")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.frame_search_bar.sizePolicy().hasHeightForWidth())
+        self.frame_search_bar.setSizePolicy(sizePolicy1)
+        self.frame_search_bar.setMinimumSize(QSize(300, 0))
+        self.frame_search_bar.setMaximumSize(QSize(1000, 16777215))
+        self.frame_search_bar.setFrameShape(QFrame.NoFrame)
+        self.frame_search_bar.setFrameShadow(QFrame.Plain)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_search_bar)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.module_search_bar = QSearchBarNew(self.frame_search_bar)
+        self.module_search_bar.setObjectName(u"module_search_bar")
+        sizePolicy1.setHeightForWidth(self.module_search_bar.sizePolicy().hasHeightForWidth())
+        self.module_search_bar.setSizePolicy(sizePolicy1)
+        self.module_search_bar.setMinimumSize(QSize(0, 0))
+        self.module_search_bar.setMaximumSize(QSize(16777215, 16777215))
 
-        self.horizontalLayout.addWidget(self.module_search)
+        self.horizontalLayout_5.addWidget(self.module_search_bar)
 
-        self.btn_view_all = QWidget(self.menu_bar)
-        self.btn_view_all.setObjectName(u"btn_view_all")
 
-        self.horizontalLayout.addWidget(self.btn_view_all)
+        self.horizontalLayout.addWidget(self.frame_search_bar)
 
-        self.module_users = QWidget(self.menu_bar)
+        self.horizontalSpacer_2 = QSpacerItem(60, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
+        self.btn_view_menu = QPushButton(self.menu_bar)
+        self.btn_view_menu.setObjectName(u"btn_view_menu")
+        self.btn_view_menu.setMinimumSize(QSize(60, 60))
+        self.btn_view_menu.setMaximumSize(QSize(60, 60))
+        icon1 = QIcon()
+        icon1.addFile(u":/Icons/ico_dashboard-white.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_view_menu.setIcon(icon1)
+        self.btn_view_menu.setIconSize(QSize(34, 34))
+        self.btn_view_menu.setFlat(True)
+
+        self.horizontalLayout.addWidget(self.btn_view_menu)
+
+        self.frame_users = QFrame(self.menu_bar)
+        self.frame_users.setObjectName(u"frame_users")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.frame_users.sizePolicy().hasHeightForWidth())
+        self.frame_users.setSizePolicy(sizePolicy2)
+        self.frame_users.setMinimumSize(QSize(200, 0))
+        self.frame_users.setMaximumSize(QSize(200, 16777215))
+        self.frame_users.setFrameShape(QFrame.NoFrame)
+        self.frame_users.setFrameShadow(QFrame.Plain)
+        self.horizontalLayout_6 = QHBoxLayout(self.frame_users)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(-1, 12, 12, 12)
+        self.module_users = QUserSelection(self.frame_users)
         self.module_users.setObjectName(u"module_users")
 
-        self.horizontalLayout.addWidget(self.module_users)
+        self.horizontalLayout_6.addWidget(self.module_users)
+
+
+        self.horizontalLayout.addWidget(self.frame_users)
 
 
         self.verticalLayout.addWidget(self.menu_bar)
@@ -92,61 +158,90 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.menu_side = QFrame(self.content)
         self.menu_side.setObjectName(u"menu_side")
-        self.menu_side.setMaximumSize(QSize(150, 16777215))
+        self.menu_side.setMinimumSize(QSize(170, 0))
+        self.menu_side.setMaximumSize(QSize(170, 16777215))
         self.menu_side.setFrameShape(QFrame.StyledPanel)
         self.menu_side.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.menu_side)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Preferred)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer_2)
+
         self.btn_module_antibodies = QMenuButton(self.menu_side)
         self.btn_module_antibodies.setObjectName(u"btn_module_antibodies")
-        self.btn_module_antibodies.setMinimumSize(QSize(0, 60))
-        self.btn_module_antibodies.setMaximumSize(QSize(16777215, 60))
+        self.btn_module_antibodies.setMinimumSize(QSize(0, 40))
+        self.btn_module_antibodies.setMaximumSize(QSize(16777215, 40))
         self.horizontalLayout_3 = QHBoxLayout(self.btn_module_antibodies)
+        self.horizontalLayout_3.setSpacing(10)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.label = QLabel(self.btn_module_antibodies)
-        self.label.setObjectName(u"label")
-        self.label.setMaximumSize(QSize(60, 60))
-        self.label.setPixmap(QPixmap(u":/Icons/ico_home-white.svg"))
-        self.label.setScaledContents(False)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.horizontalLayout_3.setContentsMargins(10, 0, 0, 0)
+        self.ico_antibody = QLabel(self.btn_module_antibodies)
+        self.ico_antibody.setObjectName(u"ico_antibody")
+        self.ico_antibody.setMinimumSize(QSize(40, 0))
+        self.ico_antibody.setMaximumSize(QSize(40, 60))
+        self.ico_antibody.setPixmap(QPixmap(u":/Icons/ico_antibody-white.svg"))
+        self.ico_antibody.setScaledContents(False)
+        self.ico_antibody.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_3.addWidget(self.label)
+        self.horizontalLayout_3.addWidget(self.ico_antibody)
 
-        self.label_2 = QLabel(self.btn_module_antibodies)
-        self.label_2.setObjectName(u"label_2")
-        font = QFont()
-        font.setPointSize(15)
-        self.label_2.setFont(font)
+        self.text_antibody = QLabel(self.btn_module_antibodies)
+        self.text_antibody.setObjectName(u"text_antibody")
+        font1 = QFont()
+        font1.setFamily(u"Helvetica Neue")
+        font1.setPointSize(15)
+        self.text_antibody.setFont(font1)
 
-        self.horizontalLayout_3.addWidget(self.label_2)
+        self.horizontalLayout_3.addWidget(self.text_antibody)
+
+        self.sel_id_antibody = QFrame(self.btn_module_antibodies)
+        self.sel_id_antibody.setObjectName(u"sel_id_antibody")
+        self.sel_id_antibody.setMaximumSize(QSize(5, 16777215))
+        self.sel_id_antibody.setFrameShape(QFrame.StyledPanel)
+        self.sel_id_antibody.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_3.addWidget(self.sel_id_antibody)
 
 
         self.verticalLayout_2.addWidget(self.btn_module_antibodies)
 
-        self.widget_2 = QWidget(self.menu_side)
-        self.widget_2.setObjectName(u"widget_2")
-        self.widget_2.setMinimumSize(QSize(0, 60))
-        self.widget_2.setMaximumSize(QSize(16777215, 60))
+        self.btn_module_placeholder = QMenuButton(self.menu_side)
+        self.btn_module_placeholder.setObjectName(u"btn_module_placeholder")
+        self.btn_module_placeholder.setMinimumSize(QSize(0, 40))
+        self.btn_module_placeholder.setMaximumSize(QSize(16777215, 40))
+        self.horizontalLayout_4 = QHBoxLayout(self.btn_module_placeholder)
+        self.horizontalLayout_4.setSpacing(10)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(10, 0, 0, 0)
+        self.ico_placeholder = QLabel(self.btn_module_placeholder)
+        self.ico_placeholder.setObjectName(u"ico_placeholder")
+        self.ico_placeholder.setMinimumSize(QSize(40, 0))
+        self.ico_placeholder.setMaximumSize(QSize(40, 60))
+        self.ico_placeholder.setPixmap(QPixmap(u":/Icons/ico_home-white.svg"))
+        self.ico_placeholder.setScaledContents(False)
+        self.ico_placeholder.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_2.addWidget(self.widget_2)
+        self.horizontalLayout_4.addWidget(self.ico_placeholder)
 
-        self.widget_3 = QWidget(self.menu_side)
-        self.widget_3.setObjectName(u"widget_3")
-        self.widget_3.setMinimumSize(QSize(0, 60))
-        self.widget_3.setMaximumSize(QSize(16777215, 60))
+        self.text_placeholder = QLabel(self.btn_module_placeholder)
+        self.text_placeholder.setObjectName(u"text_placeholder")
+        self.text_placeholder.setFont(font1)
 
-        self.verticalLayout_2.addWidget(self.widget_3)
+        self.horizontalLayout_4.addWidget(self.text_placeholder)
 
-        self.pushButton = QPushButton(self.menu_side)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(0, 60))
-        self.pushButton.setMaximumSize(QSize(16777215, 60))
-        self.pushButton.setFlat(True)
+        self.sel_id_placeholder = QFrame(self.btn_module_placeholder)
+        self.sel_id_placeholder.setObjectName(u"sel_id_placeholder")
+        self.sel_id_placeholder.setMaximumSize(QSize(5, 16777215))
+        self.sel_id_placeholder.setFrameShape(QFrame.StyledPanel)
+        self.sel_id_placeholder.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout_2.addWidget(self.pushButton)
+        self.horizontalLayout_4.addWidget(self.sel_id_placeholder)
+
+
+        self.verticalLayout_2.addWidget(self.btn_module_placeholder)
 
         self.verticalSpacer = QSpacerItem(20, 200, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -155,12 +250,17 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addWidget(self.menu_side)
 
-        self.content_2 = QFrame(self.content)
-        self.content_2.setObjectName(u"content_2")
-        self.content_2.setFrameShape(QFrame.NoFrame)
-        self.content_2.setFrameShadow(QFrame.Raised)
+        self.stackedWidget = QStackedWidget(self.content)
+        self.stackedWidget.setObjectName(u"stackedWidget")
+        self.stackedWidget.setMinimumSize(QSize(0, 0))
+        self.page_antibody = QWidget()
+        self.page_antibody.setObjectName(u"page_antibody")
+        self.stackedWidget.addWidget(self.page_antibody)
+        self.page_placeholder = QWidget()
+        self.page_placeholder.setObjectName(u"page_placeholder")
+        self.stackedWidget.addWidget(self.page_placeholder)
 
-        self.horizontalLayout_2.addWidget(self.content_2)
+        self.horizontalLayout_2.addWidget(self.stackedWidget)
 
 
         self.verticalLayout.addWidget(self.content)
@@ -168,7 +268,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 900, 22))
+        self.menubar.setGeometry(QRect(0, 0, 2989, 22))
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)
@@ -179,10 +279,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_menu.setText("")
-        self.txt_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-family:'Montserrat'; font-size:24pt;\">labmate</span></p></body></html>", None))
-        self.txt_module.setText(QCoreApplication.translate("MainWindow", u"Antibody", None))
-        self.label.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Antibodies", None))
-        self.pushButton.setText("")
+        self.txt_title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-family:'Montserrat'; font-size:24pt; color:rgba(255, 255, 255, 0.87)\">labmate</span></p></body></html>", None))
+        self.txt_module.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; color:rgba(255,255,255,0.866667);\">Antibody manager</span><span style=\" color:rgba(255,255,255,0.866667);\"/></p></body></html>", None))
+        self.btn_view_menu.setText("")
+        self.ico_antibody.setText("")
+        self.text_antibody.setText(QCoreApplication.translate("MainWindow", u"<p style=\"color:rgba(255, 255, 255, 0.87)\"> Antibodies </p>", None))
+        self.ico_placeholder.setText("")
+        self.text_placeholder.setText(QCoreApplication.translate("MainWindow", u"<p style=\"color:rgba(255, 255, 255, 0.87)\"> Placeholder </p>", None))
     # retranslateUi
 

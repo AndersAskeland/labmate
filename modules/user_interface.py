@@ -51,7 +51,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         window_size = QSize(1350/1.4, 800/2)
         self.resize(window_size)
-        self.setFixedSize(window_size)
+        self.setMinimumSize(window_size)
 
         
         # Signals
